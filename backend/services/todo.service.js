@@ -1,8 +1,7 @@
-const httpStatus = require('http-status');
 const { Todo } = require('../models');
 
 /**
- * Create a todo
+ * Create a new todo
  * @param {Object} todoBody
  * @returns {Promise<Todo>}
  */
@@ -11,4 +10,14 @@ const createTodo = async (todoBody) => {
     return todo;
 };
 
-module.exports = { createTodo };
+/**
+ * Get all todos
+ * @returns {Promise<[Todos]>}
+ */
+ const getTodos = async () => {
+    const todos = await Todo.find();
+    return todos;
+};
+
+
+module.exports = { createTodo, getTodos };

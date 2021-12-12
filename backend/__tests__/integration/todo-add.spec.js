@@ -39,27 +39,6 @@ describe('POST /api/v1/todo/add', () => {
         expect(error).toBe(null);
     });
 
-    it('Should be return HTTP-201 and success message when todo added successfuly', async () => {
-        let error = null;
-        try {
-            const res = await request(app)
-                .post('/api/v1/todo/add')
-                .send(newTodo)
-                .expect(httpStatus.CREATED);
-
-            const body = res.body;
-            expect(body).toEqual({
-                _id: newTodo._id.toHexString(),
-                content: newTodo.content,
-                isDone: false,
-                __v: 0
-            });
-        } catch (err) {
-            console.log(err);
-            error = err;
-        }
-        expect(error).toBe(null);
-    });
     it("Should return 400 if request is invalid", async () => {
         let error = null;
         try {
@@ -80,6 +59,7 @@ describe('POST /api/v1/todo/add', () => {
         expect(error).toBe(null);
 
     });
+    
     it("Should return 400 if content is null", async () => {
         let error = null;
         newTodo.content = "";
