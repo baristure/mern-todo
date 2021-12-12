@@ -1,10 +1,10 @@
 //Packages
 const express = require('express');
 const cors = require('cors');
-const bodyParser= require('body-parser');
+const bodyParser = require('body-parser');
 
 // Local Files
-const router =require('./routes/index');
+const router = require('./routes/index');
 
 const app = express();
 
@@ -16,4 +16,4 @@ app.use(bodyParser.json());
 
 app.use("/api/v1", router);
 
-module.exports=app;
+module.exports = app;

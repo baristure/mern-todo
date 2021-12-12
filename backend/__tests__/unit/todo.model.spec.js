@@ -1,25 +1,18 @@
 const { Todo } = require('../../models');
 const { connectDB, disconnectDB } = require('../../config/test-db');
+
+beforeAll(async () => await connectDB());
+afterAll(async () => await disconnectDB());
+
 describe('Todo model test', () => {
     let newTodo;
-    beforeEach(async () => {
-        try {
-            await connectDB();
-        } catch (err) {
-            console.log(err);
-        }
+    beforeEach(() => {
         newTodo = {
             _id: require("mongoose").Types.ObjectId(),
             content: "Drink water"
         }
     });
-    afterEach(async () => {
-        try {
-            await disconnectDB();
-        } catch (err) {
-            console.log(err);
-        }
-    });
+
     it('Should correctly new todo', async () => {
         let error = null;
         try {
@@ -31,6 +24,19 @@ describe('Todo model test', () => {
             error = err;
         }
         expect(error).toBeNull();
-    })
 
+    });
+
+    it('Should not validate a todo with empty content', async () => {
+        let error = null;
+        newTodo.content = null;
+        try {
+            const todo = new Todo(newTodo);
+            await todo.validate();
+        } catch (err) {
+            error = err;
+        }
+        expect(error).not.toBeNull();
+
+    });
 })
