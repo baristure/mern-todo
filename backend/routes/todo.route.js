@@ -1,9 +1,8 @@
 const express = require('express');
-const httpStatus=require('http-status');
-const todoRouter=express.Router();
+const { todoController } = require('../controllers/index');
 
-todoRouter.post("/add",(req,res)=>{
-    res.status(httpStatus.CREATED).send({message:"Todo created"});
-})
+// routes
+const todoRouter = express.Router();
+todoRouter.post("/add", todoController)
 
-module.exports=todoRouter;
+module.exports = todoRouter;

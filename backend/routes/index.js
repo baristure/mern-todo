@@ -1,7 +1,7 @@
 const express = require('express');
-const todoRouter=require('./todo.route');
+const todoRouter = require('./todo.route');
 
-const router=express.Router();
+const router = express.Router();
 
 router.use("/todo", todoRouter);
 
