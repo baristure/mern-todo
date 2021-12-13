@@ -29,6 +29,7 @@ jobs:
     name: Build & Push
     needs: build-and-test
     runs-on: ubuntu-latest
+    steps:
       - name: Set up Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@v1
