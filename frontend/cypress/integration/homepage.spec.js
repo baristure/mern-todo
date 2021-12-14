@@ -29,7 +29,6 @@ describe('Renders the homepage', () => {
     cy.get('#todo-input').type(`${newTodo}{enter}`)
     cy.get('.todo-list')
       .its('length').should('be.gte', 0)
-    cy.get('#todo-0')
-      .should('have.text', newTodo)
+    cy.get('.todo-list').contains(newTodo)
   })
 })
