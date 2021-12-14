@@ -1,11 +1,11 @@
 version: "3"
 services:
   client:
-    container_name: todo-frontend
-    image: index.docker.io/baristure/todo-frontend:latest
+    container_name: todofrontend
+    image: index.docker.io/baristure/todofrontend:latest
     restart: always
     depends_on:
-      - server
+      - api
     ports:
       - "80:80"
   api:

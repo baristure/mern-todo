@@ -2,9 +2,9 @@ require("dotenv").config();
 
 module.exports = {
   env: process.env.NODE_ENV,
-  port: process.env.PORT,
+  port: 5000,
   mongoose: {
-    url: process.env.MONGO_CONN_STRING + (process.env.NODE_ENV === "test" ? "-test" : ""),
+    url: "mongodb+srv://baris:15635123c@cluster0.lewgd.mongodb.net/todo" + (process.env.NODE_ENV === "test" ? "-test" : ""),
     options: {
       useNewUrlParser: true,
       useUnifiedTopology: true
