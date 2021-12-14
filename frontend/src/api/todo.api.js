@@ -13,6 +13,16 @@ const todoApi = {
             });
         return response;
     },
+    get: async () => {
+        const response = await axios
+            .get(`${apiBaseUrl}/api/v1/todo/`)
+            .then((res) => {
+                return res.data;
+            }).catch((err) => {
+                return err.response;
+            });
+        return response;
+    }
 };
 
 export default todoApi;
