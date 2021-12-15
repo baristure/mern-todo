@@ -79,20 +79,14 @@ const App = ({ testSubmit }) => {
             todoList.map((todo, index) => {
               return (<Todo key={todo._id} todo={todo} index={index} />)
             })
-            : loading ?
-              (
-                <div>
-                  <div className="flex mb-3 items-center border-sky-200 border-2 hover:border-sky-400 rounded-lg">
-                    <p className="w-full p-4 text-grey-darkest text-center"> Loading... ⌛</p>
-                  </div>
+            :
+            (
+              <div>
+                <div className="flex mb-3 items-center border-sky-200 border-2 hover:border-sky-400 rounded-lg">
+                  <p className="w-full p-4 text-grey-darkest text-center"> {loading ? "Loading... ⌛" : "😵‍💫 There is no Todo here 😵‍💫"}</p>
                 </div>
-              ) : (
-                <div>
-                  <div className="flex mb-3 items-center border-sky-200 border-2 hover:border-sky-400 rounded-lg">
-                    <p className="w-full p-4 text-grey-darkest text-center"> 😵‍💫 There is no Todo here 😵‍💫</p>
-                  </div>
-                </div>
-              )
+              </div>
+            )
           }
         </div>
       </div>
