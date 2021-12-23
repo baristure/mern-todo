@@ -25,10 +25,16 @@ describe('Renders the homepage', () => {
   })
   it('can add new todo items', () => {
     const newTodo = 'Feed the dog';
-
     cy.get('#todo-input').type(`${newTodo}{enter}`)
     cy.get('.todo-list')
       .its('length').should('be.gte', 0)
     cy.get('.todo-list').contains(newTodo)
+  })
+  it('.click() - delete all todo button after click Todo list should be empty',()=>{
+    cy.get('#delete-all').click();
+    cy.get('.todo').should('not.be.exist');
+  })
+  it('Should have a delete all button',()=>{
+    cy.get('#delete-all').should('exist')
   })
 })

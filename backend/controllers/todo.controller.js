@@ -23,6 +23,15 @@ const getTodos = async (req, res) => {
     }
 
 }
+const deleteTodos = async (req, res) => {
+    try {
+        await todoService.deleteTodos();
+        return res.status(httpStatus.NO_CONTENT).send();
+    } catch (err) {
+        console.log(err);
+        return res.status(httpStatus.INTERNAL_SERVER_ERROR).send(err.message);
+    }
+}
 
 
-module.exports = { addTodo, getTodos };
+module.exports = { addTodo, getTodos, deleteTodos };

@@ -15,6 +15,11 @@ todoRouter.post("/add", todoController.addTodo);
  * @access Public
  */
 todoRouter.get("/", todoController.getTodos);
-
+/**
+ * @route  DELETE /
+ * @desc  Delete All Todos
+ * @access Public
+ */
+ todoRouter.delete("/", todoController.deleteTodos);
 
 module.exports = todoRouter;

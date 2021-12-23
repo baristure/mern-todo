@@ -16,6 +16,21 @@ describe('Layout', () => {
         const todoList = screen.getByTestId("todo-list");
         expect(todoList).toBeInTheDocument();
     })
+    it('should have a delete all button',()=>{
+        render(<App/>);
+        const deleteAllButton=screen.getByTestId("delete-all");
+        expect(deleteAllButton).toBeInTheDocument();
+
+    })
+    it('should be call function after click deleteAll',async()=>{
+        const mockOnSubmit = jest.fn();
+        const {getByTestId}=render(<App testSubmit={mockOnSubmit} />);
+        await act(async ()=>{
+            const deleteButton=getByTestId("delete-all");
+            fireEvent.click(deleteButton);
+        })
+        expect(mockOnSubmit).toHaveBeenCalled();
+    })
     it('should submit valid todo when click to button', async () => {
         // Arrange
         const mockOnSubmit = jest.fn();

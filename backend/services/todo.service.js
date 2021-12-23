@@ -19,5 +19,13 @@ const createTodo = async (todoBody) => {
     return todos;
 };
 
+/**
+ * Delete all todos
+ * @returns {Promise<bool>}
+ */
+ const deleteTodos = async () => {
+    await Todo.deleteMany({});
+    return true;
+};
 
-module.exports = { createTodo, getTodos };
+module.exports = { createTodo, getTodos,deleteTodos };

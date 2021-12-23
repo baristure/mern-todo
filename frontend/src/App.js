@@ -40,6 +40,23 @@ const App = ({ testSubmit }) => {
     }
   }
 
+  const deleteAll = () => {
+    if (testSubmit) {
+      testSubmit();
+    } else {
+      setLoading(true);
+      todoApi.deleteAll()
+        .then(() => {
+          setTodoList([]);
+        })
+        .catch(err => {
+          console.log(err);
+        }).finally(() => {
+          setLoading(false);
+        })
+    }
+  }
+
   return (
     <div className="min-h-screen w-screen flex items-center justify-center bg-sky-200 font-mono overflow-auto" id="container">
       <div className="bg-gray-50 rounded-lg shadow p-6 m-6 w-full lg:w-3/4 lg:max-w-lg">
@@ -69,6 +86,13 @@ const App = ({ testSubmit }) => {
                   </svg> :
                   <span className="text-white">Add Todo</span>
                 }
+              </button>
+              <button
+                id="delete-all"
+                data-testid="delete-all"
+                onClick={deleteAll}
+              >
+                Delete All
               </button>
             </div>
           </form>

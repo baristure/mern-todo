@@ -22,6 +22,14 @@ const todoApi = {
                 return err.response;
             });
         return response;
+    },
+    deleteAll: async () => {
+        const response = await axios
+            .delete(`${apiBaseUrl}/api/v1/todo`)
+            .catch((err) => {
+                return err.response;
+            });
+        return response;
     }
 };
 
